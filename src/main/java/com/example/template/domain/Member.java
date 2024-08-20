@@ -20,18 +20,14 @@ import java.util.stream.Collectors;
 public class Member implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String loginId;
-    private String password;
+
 
     @Builder
-    public Member(String name, String loginId, String password) {
-        this.name = name;
-        this.loginId = loginId;
-        this.password = password;
+    public Member(Long id, List<String> roles) {
+        this.id = id;
+        this.roles = roles;
     }
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "member_roles")
